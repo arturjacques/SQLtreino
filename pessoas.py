@@ -2,6 +2,7 @@ from cores import letraAma,letraAzu,letraNor,letraVer
 import sqlite3
 
 pessoas=[]
+pathdb='db\estudox.db'
 
 while True:
     print(f'{letraNor()}{"-"*40}')
@@ -26,7 +27,7 @@ while True:
         print('-'*40)
         print(f'{letraNor()}', end='')
         print(f'{"Nome":<30}{"Idade":<10}')
-        conn = sqlite3.connect('C:\SQLite\Teste\estudox.db')
+        conn = sqlite3.connect(pathdb)
         cursor = conn.cursor()
         cursor.execute("""
         SELECT * FROM pessoas;
@@ -38,7 +39,7 @@ while True:
     elif a==2:
         pessoas.append(input('Digite o nome: ').strip().title())
         pessoas.append(input('Digite a idade: '))
-        conn = sqlite3.connect('C:\SQLite\Teste\estudox.db')
+        conn = sqlite3.connect(pathdb)
         cursor = conn.cursor()
         # inserindo dados na tabela
         cursor.execute("""
